@@ -12,7 +12,7 @@ def restos_quocientes(a, b)
     dividendo = divisor
     divisor = resto
   end
-  restos << b if restos.empty?
+  restos.unshift(b) if restos.length == 1
   { restos: restos, quocientes: quocientes }
 end
 
@@ -34,6 +34,7 @@ def bezout(a, b)
   end
   { gcd: restos_quocientes[:restos][-2], bezout_a: euc_ext_as[-2], bezout_b: euc_ext_bs[-2] }
 end
+
 
 def temp_prep(amp_a, amp_b, miojo)
   bezout_result = bezout(amp_a, amp_b)
@@ -62,3 +63,4 @@ def temp_prep(amp_a, amp_b, miojo)
     [amp_a * new_coeff[:coeff0], amp_b * new_coeff[:coeff1]].max
   end
 end
+
